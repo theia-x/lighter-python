@@ -1,0 +1,1 @@
+rsync -ahz --exclude=.github --exclude=.git --exclude=__pycache__ --exclude=*.pyc --exclude=build ../lighter-python/ fortress:/home/admin/preprod/lighter-python
