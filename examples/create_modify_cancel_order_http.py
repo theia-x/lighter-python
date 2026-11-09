@@ -51,10 +51,9 @@ async def main():
     ]
 }
 
-    params = {
-        "key":DB_KEY
-    }
-    resp = requests.post(DB_URL, json=payload, params=params)
+    # db_backend auth: Bearer header, never a ?key= query param.
+    headers = {"Authorization": f"Bearer {DB_KEY}"}
+    resp = requests.post(DB_URL, json=payload, headers=headers)
     if err is not None:
         raise Exception(err)
 
