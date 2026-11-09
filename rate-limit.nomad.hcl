@@ -1,3 +1,10 @@
+# db_backend API key. Never commit the value: supply it at submit time with
+#   NOMAD_VAR_db_key=... nomad job run <this file>
+# (or -var-file pointing at an uncommitted file).
+variable "db_key" {
+  type = string
+}
+
 job "lighter-rate-limit" {
   datacenters = ["dc1"]
   type        = "batch"
@@ -25,7 +32,7 @@ job "lighter-rate-limit" {
       }
 
       env {
-        DB_KEY = "yOQQap7831p5k"
+        DB_KEY = var.db_key
         API_CONFIG_DIR = "/home/admin/preprod/lighter-python/examples/api_key_config.json"
       }
     }
