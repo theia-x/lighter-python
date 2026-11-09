@@ -14,7 +14,9 @@ async def main():
     BASE_URL = "https://bagendhq.xyz"
     ENDPOINT = "/backend/rate-limit-report"
     DB_URL = f"{BASE_URL}{ENDPOINT}"
-    DB_KEY = os.getenv("DB_KEY")
+    DB_KEY = os.getenv("DATABASE_KEY")
+    if not DB_KEY:
+        raise SystemExit("DATABASE_KEY is not set (run via with-database-key.sh)")
 
     # Note: change this to 2048 to trade spot ETH. Make sure you have at least 0.1 ETH to trade spot.
     market_index = 0
